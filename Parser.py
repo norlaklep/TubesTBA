@@ -6,11 +6,71 @@ def parser(sentence):
     tokens = sentence.lower().split()
     tokens.append('EOS')
 
-    non_terminals = []
-    terminals = []
+    non_terminals = ['Statement','kondisi','aksi','ekspresi','variable']
+    terminals = ['if', ':' , 'else', '>', 'c', '=', '*', '+', 'a', 'b']
 
     parse_table = {}
-    
+
+	parse_table[('Statement', 'if')]    = ['if','kondisi',':','aksi','else',':','aksi']
+    parse_table[('Statement', 'else')]  = ['if','kondisi',':','aksi','else',':','aksi'] 
+    parse_table[('Statement', ':')]     = ['if','kondisi',':','aksi','else',':','aksi'] 
+    parse_table[('Statement', '>')]     = ['error']
+    parse_table[('Statement', '=')]     = ['error']
+    parse_table[('Statement', '*')]     = ['error'] 
+    parse_table[('Statement', '+')]     = ['error'] 
+    parse_table[('Statement', 'a')]     = ['error']
+    parse_table[('Statement', 'b')]     = ['error']
+    parse_table[('Statement', 'c')]     = ['error']  
+    parse_table[('Statement', 'EOS')]   = ['error']
+
+	parse_table[('kondisi', 'if')]      = ['error']
+    parse_table[('kondisi', 'else')]    = ['error']
+    parse_table[('kondisi', ':')]       = ['error']
+    parse_table[('kondisi', '>')]       = ['variable','>','variable'] 
+    parse_table[('kondisi', '=')]       = ['error']
+    parse_table[('kondisi', '*')]       = ['error'] 
+    parse_table[('kondisi', '+')]       = ['error'] 
+    parse_table[('kondisi', 'a')]       = ['error']
+    parse_table[('kondisi', 'b')]       = ['error']
+    parse_table[('kondisi', 'c')]       = ['error']  
+    parse_table[('kondisi', 'EOS')]     = ['error']
+
+	parse_table[('aksi', 'if')]         = ['error']
+    parse_table[('aksi', 'else')]       = ['error']
+    parse_table[('aksi', ':')]          = ['error']
+    parse_table[('aksi', '>')]          = ['error']
+    parse_table[('aksi', '=')]          = ['c','=','ekspresi']
+    parse_table[('aksi', '*')]          = ['error'] 
+    parse_table[('aksi', '+')]          = ['error'] 
+    parse_table[('aksi', 'a')]          = ['error']
+    parse_table[('aksi', 'b')]          = ['error']
+    parse_table[('aksi', 'c')]          = ['c','=','ekspresi']
+    parse_table[('aksi', 'EOS')]        = ['error']
+
+	parse_table[('ekspresi', 'if')]     = ['error']
+    parse_table[('ekspresi', 'else')]   = ['error']
+    parse_table[('ekspresi', ':')]      = ['error']
+    parse_table[('ekspresi', '>')]      = ['error'] 
+    parse_table[('ekspresi', '=')]      = ['error']
+    parse_table[('ekspresi', '*')]      = ['variable', '*','variable'] 
+    parse_table[('ekspresi', '+')]      = ['variable', '+','variable'] 
+    parse_table[('ekspresi', 'a')]      = ['error']
+    parse_table[('ekspresi', 'b')]      = ['error']
+    parse_table[('ekspresi', 'c')]      = ['error']  
+    parse_table[('ekspresi', 'EOS')]    = ['error']
+
+	parse_table[('variable', 'if')]     = ['error']
+    parse_table[('variable', 'else')]   = ['error']
+    parse_table[('variable', ':')]      = ['error']
+    parse_table[('variable', '>')]      = ['error']
+    parse_table[('variable', '=')]      = ['error']
+    parse_table[('variable', '*')]      = ['error'] 
+    parse_table[('variable', '+')]      = ['error'] 
+    parse_table[('variable', 'a')]      = ['a']
+    parse_table[('variable', 'b')]      = ['b']
+    parse_table[('variable', 'c')]      = ['error']  
+    parse_table[('variable', 'EOS')]    = ['error']
+
 
     stack = []
     stack.append('#')
@@ -61,9 +121,6 @@ def parser(sentence):
 
 #Main Program Parser
 print("============= TERMINAL =============")
-print("")
-print("")
-print("")
 print("==================================== \n ")
 sentence = input("MASUKKAN INPUT : ")
 input_string = sentence.lower()+'#'
