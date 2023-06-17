@@ -74,7 +74,7 @@ def parser(sentence):
 
     stack = []
     stack.append('#')
-    stack.append('S')
+    stack.append('Statement')
 
     index_token = 0
     symbol = tokens[index_token]
