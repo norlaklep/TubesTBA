@@ -11,7 +11,7 @@ def parser(sentence):
 
     parse_table = {}
 
-parse_table[('Statement', 'if')]    = ['if','kondisi',':','aksi','else',':','aksi']
+    parse_table[('Statement', 'if')]    = ['if','kondisi',':','aksi','else',':','aksi']
     parse_table[('Statement', 'else')]  = ['if','kondisi',':','aksi','else',':','aksi'] 
     parse_table[('Statement', ':')]     = ['if','kondisi',':','aksi','else',':','aksi'] 
     parse_table[('Statement', '>')]     = ['error']
@@ -23,7 +23,7 @@ parse_table[('Statement', 'if')]    = ['if','kondisi',':','aksi','else',':','aks
     parse_table[('Statement', 'c')]     = ['error']  
     parse_table[('Statement', 'EOS')]   = ['error']
 
-parse_table[('kondisi', 'if')]      = ['error']
+    parse_table[('kondisi', 'if')]      = ['error']
     parse_table[('kondisi', 'else')]    = ['error']
     parse_table[('kondisi', ':')]       = ['error']
     parse_table[('kondisi', '>')]       = ['variable','>','variable'] 
@@ -35,7 +35,7 @@ parse_table[('kondisi', 'if')]      = ['error']
     parse_table[('kondisi', 'c')]       = ['error']  
     parse_table[('kondisi', 'EOS')]     = ['error']
 
-parse_table[('aksi', 'if')]         = ['error']
+    parse_table[('aksi', 'if')]         = ['error']
     parse_table[('aksi', 'else')]       = ['error']
     parse_table[('aksi', ':')]          = ['error']
     parse_table[('aksi', '>')]          = ['error']
@@ -47,7 +47,7 @@ parse_table[('aksi', 'if')]         = ['error']
     parse_table[('aksi', 'c')]          = ['c','=','ekspresi']
     parse_table[('aksi', 'EOS')]        = ['error']
 
-parse_table[('ekspresi', 'if')]     = ['error']
+    parse_table[('ekspresi', 'if')]     = ['error']
     parse_table[('ekspresi', 'else')]   = ['error']
     parse_table[('ekspresi', ':')]      = ['error']
     parse_table[('ekspresi', '>')]      = ['error'] 
@@ -59,7 +59,7 @@ parse_table[('ekspresi', 'if')]     = ['error']
     parse_table[('ekspresi', 'c')]      = ['error']  
     parse_table[('ekspresi', 'EOS')]    = ['error']
 
-parse_table[('variable', 'if')]     = ['error']
+    parse_table[('variable', 'if')]     = ['error']
     parse_table[('variable', 'else')]   = ['error']
     parse_table[('variable', ':')]      = ['error']
     parse_table[('variable', '>')]      = ['error']
