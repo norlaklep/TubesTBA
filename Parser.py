@@ -39,12 +39,12 @@ def parser(sentence):
     parse_table[('aksi', 'else')]       = ['error']
     parse_table[('aksi', ':')]          = ['error']
     parse_table[('aksi', '>')]          = ['error']
-    parse_table[('aksi', '=')]          = ['c','=','ekspresi']
+    parse_table[('aksi', '=')]          = ['variable','=','ekspresi']
     parse_table[('aksi', '*')]          = ['error'] 
     parse_table[('aksi', '+')]          = ['error'] 
     parse_table[('aksi', 'a')]          = ['error']
     parse_table[('aksi', 'b')]          = ['error']
-    parse_table[('aksi', 'c')]          = ['c','=','ekspresi']
+    parse_table[('aksi', 'c')]          = ['error']
     parse_table[('aksi', 'EOS')]        = ['error']
 
     parse_table[('ekspresi', 'if')]     = ['error']
@@ -68,7 +68,7 @@ def parser(sentence):
     parse_table[('variable', '+')]      = ['error'] 
     parse_table[('variable', 'a')]      = ['a']
     parse_table[('variable', 'b')]      = ['b']
-    parse_table[('variable', 'c')]      = ['error']  
+    parse_table[('variable', 'c')]      = ['c']  
     parse_table[('variable', 'EOS')]    = ['error']
 
 
